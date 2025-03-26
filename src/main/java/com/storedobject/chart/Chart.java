@@ -18,6 +18,7 @@ package com.storedobject.chart;
 
 import java.util.*;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -60,14 +61,14 @@ public class Chart extends AbstractPart implements Component, HasData, HasAnimat
     private Animation animation;
     private Emphasis emphasis;
     private SOChart soChart;
-    private final HashMap<SOEvent, Runnable> events = new HashMap<>();
+    private final HashMap<SOEvent, Consumer<String>> events = new HashMap<>();
 
     @Override
-    public HashMap<SOEvent, Runnable> getEvents() {
+    public HashMap<SOEvent, Consumer<String>> getEvents() {
         return this.events;
     }
 
-    public void addEvent(SOEvent key, Runnable value) {
+    public void addEvent(SOEvent key, Consumer<String> value) {
         this.events.put(key, value);
     }
 

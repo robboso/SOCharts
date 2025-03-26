@@ -17,6 +17,7 @@
 package com.storedobject.chart;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * <p>
@@ -47,7 +48,7 @@ public interface Component extends ComponentPart {
     default void addParts(SOChart soChart) {
     }
 
-    default Map<SOEvent, Runnable> getEvents() {
+    default Map<SOEvent, Consumer<String>> getEvents() {
         return null;
     }
 }

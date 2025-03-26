@@ -97,7 +97,8 @@ public class SOChart extends LitComponent implements HasSize {
 
     @ClientCallable
     private void runEvent(String event, String target) {
-        this.events.get(new SOEvent(event, target)).run(target);
+        this.events.get(
+                new SOEvent(event, target)).accept(target);
     }
 
     /**
@@ -373,7 +374,7 @@ public class SOChart extends LitComponent implements HasSize {
             for(Component c: components) {
                 if(c != null) {
                     this.components.add(c);
-                    Map<SOEvent, Runnable> cEvents = c.getEvents();
+                    Map<SOEvent, Consumer<String>> cEvents = c.getEvents();
                     if (cEvents != null) {
                         this.events.putAll(cEvents);
                         for (SOEvent key : this.events.keySet()) {
