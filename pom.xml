@@ -154,6 +154,13 @@
 
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub robboso Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/robboso/SOCharts</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>

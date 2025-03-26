@@ -96,9 +96,9 @@ public class SOChart extends LitComponent implements HasSize {
     private boolean svg = false;
 
     @ClientCallable
-    private void runEvent(String event, String target) {
+    private void runEvent(String event, String target, String params) {
         this.events.get(
-                new SOEvent(event, target)).accept(target);
+                new SOEvent(event, target)).accept(params);
     }
 
     /**
