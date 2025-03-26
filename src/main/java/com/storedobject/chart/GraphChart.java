@@ -1,5 +1,6 @@
 package com.storedobject.chart;
 
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 
@@ -114,7 +115,7 @@ public class GraphChart extends Chart {
 
     public GraphChart addNode(Node node) {
         this.nodes.add(node);
-        for (Map.Entry<String, Runnable> eventListener : node.getEventListeners().entrySet()) {
+        for (Map.Entry<String, Consumer<String>> eventListener : node.getEventListeners().entrySet()) {
             this.addEvent(new SOEvent(eventListener.getKey(), node.getName()), eventListener.getValue());
         }
         return this;

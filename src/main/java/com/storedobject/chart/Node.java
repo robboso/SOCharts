@@ -7,6 +7,7 @@ import com.vaadin.flow.component.html.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Node implements ComponentPart {
     private final long id = ID.newID();
@@ -17,7 +18,7 @@ public class Node implements ComponentPart {
     private List<Edge> edges;
     private double xCoord;
     private double yCoord;
-    private final HashMap<String, Runnable> eventListeners = new HashMap<>();
+    private final HashMap<String, Consumer<String>> eventListeners = new HashMap<>();
     private Type category;
 
     public Node(String name) {
@@ -75,12 +76,12 @@ public class Node implements ComponentPart {
         return edge;
     }
 
-    public Node addEventListener(String eventName, Runnable action) {
+    public Node addEventListener(String eventName, Consumer<String> action) {
         this.eventListeners.put(eventName, action);
         return this;
     }
 
-    public HashMap<String, Runnable> getEventListeners() {
+    public HashMap<String, Consumer<String>> getEventListeners() {
         return this.eventListeners;
     }
 
