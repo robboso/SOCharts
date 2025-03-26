@@ -26,6 +26,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * <p>
@@ -89,14 +90,14 @@ public class SOChart extends LitComponent implements HasSize {
     private DefaultColors defaultColors;
     private AbstractColor defaultBackground;
     private DefaultTextStyle defaultTextStyle;
-    private final HashMap<SOEvent, Runnable> events = new HashMap<>();
+    private final HashMap<SOEvent, Consumer<String>> events = new HashMap<>();
     private String theme;
     private Language language;
     private boolean svg = false;
 
     @ClientCallable
     private void runEvent(String event, String target) {
-        this.events.get(new SOEvent(event, target)).run();
+        this.events.get(new SOEvent(event, target)).run(target);
     }
 
     /**
